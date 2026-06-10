@@ -80,22 +80,13 @@ def _(plt, wightman_amygdala):
 
     fig_pvalue = plot_pvalue_distribution(wightman_amygdala)
     fig_pvalue
-    return (fig_pvalue,)
+    return
 
 
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     Let's write something!
-    """)
-    return
-
-
-@app.cell(hide_code=True)
-def _(fig_pvalue, mo):
-    mo.md(f"""
-    Something
-    {mo.as_html(fig_pvalue)}
     """)
     return
 
