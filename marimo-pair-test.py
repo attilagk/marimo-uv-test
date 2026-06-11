@@ -1,7 +1,7 @@
 import marimo
 
 __generated_with = "0.23.9"
-app = marimo.App(width="medium")
+app = marimo.App(width="medium", auto_download=["ipynb"])
 
 
 @app.cell
@@ -9,14 +9,14 @@ def _():
     import marimo as mo
     import pandas as pd
 
-    mutations = pd.read_csv("missense-mutations.csv")
+    mutations = pd.read_csv("../data/missense-mutations.csv")
     mo.ui.table(mutations)
     return mo, pd
 
 
 @app.cell
 def _(mo, pd):
-    wightman_amygdala = pd.read_csv("wightman_Brain_Amygdala.csv")
+    wightman_amygdala = pd.read_csv("../data/wightman_Brain_Amygdala.csv")
     mo.ui.table(wightman_amygdala)
     return (wightman_amygdala,)
 
@@ -93,6 +93,20 @@ def _(mo):
 
 @app.cell
 def _():
+    def fibonacci_series(n: int) -> list[int]:
+        """Return the first n numbers in the Fibonacci series."""
+        if not isinstance(n, int):
+            raise TypeError("n must be an integer")
+        if n <= 0:
+            raise ValueError("n must be a positive integer")
+
+        series = [0, 1]
+        while len(series) < n:
+            series.append(series[-1] + series[-2])
+        return series[:n]
+
+
+    fibonacci_series(9)
     return
 
 
